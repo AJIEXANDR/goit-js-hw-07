@@ -5,29 +5,18 @@ console.log(galleryItems);
 
 const galleryEl = document.querySelector('.gallery');
 
-galleryEl.addEventListener('click', onGalleryImageClick);
-galleryEl.innerHTML = galleryItemsMarup(galleryItems);
+galleryEl.insertAdjacentHTML('beforeend', galleryItemsMarup(galleryItems));
 
 // console.log(galleryEl);
 
 function galleryItemsMarup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
-      return `<a class = "gallery__item" href="${original}">
+      return `<li><a class = "gallery__item" href="${original}">
     <img class = "gallery__image" src = "${preview}" alt = "${description}" title = "${description}"/>
-    </a>`;
+    </a></li>`;
     })
     .join('');
 }
 
-function onGalleryImageClick(event) {
-  event.preventDefault();
-  if (!event.target.classList.contains('gallery__image')) {
-    return;
-  }
-  createSimpleLightBox();
-}
-
-function createSimpleLightBox() {
-  new SimpleLightbox('.gallery a', { captionDelay: 250 });
-}
+new SimpleLightbox('.gallery a', { captionDelay: 250 });
