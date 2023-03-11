@@ -28,7 +28,6 @@ function galleryItemsMarkup(arrayOfObjects) {
 
 function onGalleryItemClick(event) {
   event.preventDefault();
-  console.log(event.currentTarget);
   if (!event.target.classList.contains('gallery__image')) {
     return;
   }
