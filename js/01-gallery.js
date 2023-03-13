@@ -37,7 +37,7 @@ function onGalleryItemClick(event) {
 
 function createLargeImg(href) {
   const largeImg = basicLightbox.create(`
-      <img  src="${href}" >
+      <img  src="${href}" width ='1280'>
   `);
 
   const closeOnEsc = document.addEventListener('keydown', onLargeImgKeydown, {
@@ -45,7 +45,7 @@ function createLargeImg(href) {
   });
 
   function onLargeImgKeydown(event) {
-    if (largeImg.visible() && event.code === 'Escape') {
+    if (event.code === 'Escape') {
       largeImg.close();
     }
   }
