@@ -28,7 +28,7 @@ function galleryItemsMarkup(arrayOfObjects) {
 
 function onGalleryItemClick(event) {
   event.preventDefault();
-  if (!event.target.classList.contains('gallery__image')) {
+  if (event.target.nodeName !== 'IMG') {
     return;
   }
 
@@ -40,7 +40,9 @@ function createLargeImg(href) {
       <img  src="${href}" >
   `);
 
-  const closeOnEsc = document.addEventListener('keydown', onLargeImgKeydown);
+  const closeOnEsc = document.addEventListener('keydown', onLargeImgKeydown, {
+    once: true,
+  });
 
   function onLargeImgKeydown(event) {
     if (largeImg.visible() && event.code === 'Escape') {
