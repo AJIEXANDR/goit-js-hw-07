@@ -31,13 +31,15 @@ function onGalleryItemClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
+  const imgHref = event.target.dataset.source;
+  const imgAlt = event.target.alt;
 
-  createLargeImg(event.target.dataset.source);
+  createLargeImg(imgHref, imgAlt);
 }
 
-function createLargeImg(href) {
+function createLargeImg(href, alt) {
   const largeImg = basicLightbox.create(`
-      <img  src="${href}" width ='1280'>
+      <img  src="${href}" alt = "${alt}" width ='1280'>
   `);
 
   const closeOnEsc = document.addEventListener('keydown', onLargeImgKeydown, {
