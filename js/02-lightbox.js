@@ -19,4 +19,7 @@ function galleryItemsMarup(galleryItems) {
     .join('');
 }
 
-new SimpleLightbox('.gallery a', { captionDelay: 250 });
+const ligthbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
